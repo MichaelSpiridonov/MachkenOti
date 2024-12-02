@@ -4,6 +4,6 @@ import svgr from "vite-plugin-svgr";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	base: '/MachkenOti',
+	base: '/MachkenOti/',
 	plugins: [react(), svgr()],
 })
