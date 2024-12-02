@@ -8,7 +8,7 @@ export function LandingPage() {
       <h1>כותרת לדף נחיתה</h1>
       <img
         className='profile-image'
-        src='/img/ProfileImage.jpg?'
+        src='./img/ProfileImage.jpg?'
         alt='Person Image'
       />
       <Link to={'/form'} className='frm-btn'>לחץ כאן כדי להתחיל תהליך הרשמה</Link>
