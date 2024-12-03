@@ -13,6 +13,7 @@ import {
   MenuItem,
   InputLabel,
 } from '@mui/material'
+import { Link } from 'react-router'
 
 export function Form() {
   const questions = [
@@ -29,6 +30,13 @@ export function Form() {
       text: 'סטטוס משפחתי',
       type: 'select',
       options: ['רווק', 'נשוי', 'גרוש', 'אלמן'],
+      isRequired: true,
+    },
+    {
+      id: 'EmploymentStatus',
+      text: 'סטטוס תעסוקתי',
+      type: 'select',
+      options: ['שכיר', 'עצמאי', 'שכיר בעל שליטה', 'פנסיונר', 'חייל'],
       isRequired: true,
     },
     {
@@ -51,6 +59,12 @@ export function Form() {
       maxLength: 10,
       isRequired: true,
     },
+    {
+      id: 'homeAddress',
+      text: 'כתובת מגורים מלאה',
+      type: 'text',
+      isRequired: true,
+    },
   ]
 
   const [answers, setAnswers] = useState({})
@@ -60,7 +74,7 @@ export function Form() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false)
-    }, 1)
+    }, 1500)
     return () => clearTimeout(timer)
   }, [])
 
@@ -88,14 +102,6 @@ export function Form() {
       }
       return newAnswers
     })
-  }
-
-  const booleanToText = (value) => {
-    return value ? 'yes' : 'no' // Converts true to 'כן' and false to 'לא'
-  }
-
-  const handleClear = () => {
-    setAnswers({})
   }
 
   if (loading) return <Loader />
@@ -131,15 +137,12 @@ export function Form() {
           >
             <h3>לווה {index + 1}</h3>
             {questions.map((question) => {
-              // Check for conditional rendering
-              if (
-                question.condition &&
-                !answers[index]?.[question.condition] === true
-              ) {
-                return null
-              }
+              const conditionMet =
+                !question.condition ||
+                answers[index]?.[question.condition] === true
 
-              // Render fields based on type
+              if (!conditionMet) return null
+
               switch (question.type) {
                 case 'text':
                 case 'number':
@@ -164,6 +167,7 @@ export function Form() {
                       fullWidth
                       key={question.id}
                       variant='outlined'
+                      sx={{ mb: 2 }}
                     >
                       <InputLabel id={`${question.id}-label`}>
                         {question.text}
@@ -200,7 +204,9 @@ export function Form() {
                         row
                         value={
                           answers[index]
-                            ? booleanToText(answers[index][question.id])
+                            ? answers[index][question.id]
+                              ? 'yes'
+                              : 'no'
                             : null
                         }
                         onChange={(e) =>
@@ -234,26 +240,28 @@ export function Form() {
 
       {numBorrowers && (
         <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center' }}>
-          <Button
-            variant='contained'
-            onClick={() => console.log('Submitted answers:', answers)}
-            sx={{
-              mt: 2,
-              mb: 4, // Add margin-bottom for spacing
-              fontSize: '1.1rem',
-              padding: '12px 24px', // Bigger button for mobile
-            }}
-          >
-            שלח
-          </Button>
+
+            <Link to='/goodbye'>
+              <Button
+                variant='contained'
+                sx={{
+                  mt: 2,
+                  mb: 4,
+                  fontSize: '1.1rem',
+                  padding: '12px 24px',
+                }}
+              >
+                שלח
+              </Button>
+            </Link>
           <Button
             variant='outlined'
-            onClick={handleClear}
+            onClick={() => setAnswers({})}
             sx={{
               mt: 2,
-              mb: 4, // Add margin-bottom for spacing
+              mb: 4,
               fontSize: '1.1rem',
-              padding: '12px 24px', // Bigger button for mobile
+              padding: '12px 24px',
             }}
           >
             נקה
