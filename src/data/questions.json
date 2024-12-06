@@ -1,0 +1,112 @@
+[
+    {
+      "id": "fullName",
+      "text": "שם מלא",
+      "type": "text",
+      "isRequired": true
+    },
+    {
+      "id": "idNumber",
+      "text": "מספר ת.ז",
+      "type": "number",
+      "maxLength": 9,
+      "isRequired": true
+    },
+    {
+      "id": "maritalStatus",
+      "text": "סטטוס משפחתי",
+      "type": "select",
+      "options": ["רווק", "נשוי", "גרוש", "אלמן"],
+      "isRequired": true
+    },
+    {
+      "id": "employmentStatus",
+      "text": "סטטוס תעסוקתי",
+      "type": "select",
+      "options": ["שכיר", "עצמאי", "שכיר בעל שליטה", "פנסיונר", "חייל"],
+      "isRequired": true
+    },
+    {
+      "id": "paysRent",
+      "text": "האם מתגורר בשכירות?",
+      "type": "boolean",
+      "isRequired": true
+    },
+    {
+      "id": "monthlyPayment",
+      "text": "כמה משלמים בחודש?",
+      "type": "number",
+      "condition": "paysRent",
+      "isRequired": true
+    },
+    {
+      "id": "mobilePhone",
+      "text": "טלפון נייד",
+      "type": "number",
+      "maxLength": 10,
+      "isRequired": true
+    },
+    {
+      "id": "homeAddress",
+      "text": "כתובת מגורים מלאה",
+      "type": "text",
+      "isRequired": true
+    },
+    {
+      "id": "relationshipWithOthers",
+      "text": "קשר לשאר הלווים",
+      "type": "select",
+      "options": ["משפחה", "בן זוג", "שותפים"],
+      "condition": "numBorrowers",
+      "isRequired": true
+    },
+    {
+      "id": "birthDate",
+      "text": "תאריך לידה",
+      "type": "date",
+      "isRequired": true
+    },
+    {
+      "id": "incomeSalary",
+      "text": "הכנסות ממשכורת נטו",
+      "type": "number",
+      "isRequired": true
+    },
+    {
+      "id": "additionalIncomeSource",
+      "text": "אם יש הכנסות נוספות מה מקורן וכמה?",
+      "type": "text",
+      "isRequired": true
+    },
+    {
+      "id": "bankDeposit",
+      "text": "המשכורת מופקדת בבנק?",
+      "type": "boolean",
+      "isRequired": true
+    },
+    {
+      "id": "employmentDuration",
+      "text": "וותק או רצף במקום העבודה",
+      "type": "text",
+      "isRequired": true
+    },
+    {
+      "id": "numPropertiesOwned",
+      "text": "מספר דירות בבעלות",
+      "type": "number",
+      "isRequired": true
+    },
+    {
+      "id": "idIssueDate",
+      "text": "תאריך הנפקת ת\"ז",
+      "type": "date",
+      "isRequired": true
+    },
+    {
+      "id": "creditCardActive",
+      "text": "האם יש כרטיס אשראי בנקאי בתוקף?",
+      "type": "boolean",
+      "isRequired": true
+    }
+  ]
+  
