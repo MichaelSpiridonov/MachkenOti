@@ -128,12 +128,6 @@
     "isRequired": true
   },
   {
-    "id": "agreeToAgreement",
-    "text": "ברור לי כי אני מחוייבת על אמינות ועדכניות הפרטים שמלאתי",
-    "type": "checkbox",
-    "isRequired": true
-  },
-  {
     "id": "isMyProperty",
     "text": "אתה בעל נכס על שמך?",
     "type": "boolean",
@@ -171,6 +165,12 @@
     "text": "את/ה שכיר או עצמאי?",
     "type": "select",
     "options": ["שכיר", "שכיר/ה ועצמאי/ת", "עצמאי/ת"],
+    "isRequired": true
+  },
+  {
+    "id": "agreeToAgreement",
+    "text": "ברור לי כי אני מחוייבת על אמינות ועדכניות הפרטים שמלאתי",
+    "type": "checkbox",
     "isRequired": true
   }
 ]
