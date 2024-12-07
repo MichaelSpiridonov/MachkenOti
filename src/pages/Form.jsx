@@ -35,7 +35,7 @@ export function Form() {
     switch (target.type) {
       case 'number':
       case 'range':
-        value = +target.value
+        value = target.value
         break
 
       case 'checkbox':
@@ -93,7 +93,8 @@ export function Form() {
     if (missingAnswers.length > 0) {
       setAlertMessage(
         <Alert
-          severity='warning'
+          variant='filled'
+          severity='error'
           ref={alertRef}
         >
           <strong>הייתה בעיה במילוי השאלות:</strong>
@@ -139,14 +140,17 @@ export function Form() {
 
   const handleBorrowersChange = (value) => {
     setNumBorrowers(value)
+
     setAnswers((prevAnswers) => {
       const newAnswers = { ...prevAnswers }
 
-      // Identify which keys belong to removed borrowers
+      // Remove extra borrowers
       Object.keys(newAnswers).forEach((key) => {
-        const borrowerIndex = parseInt(key.match(/\d+$/)?.[0], 10) // Extract index from key
-        if (!isNaN(borrowerIndex) && borrowerIndex >= value) {
-          delete newAnswers[key] // Remove keys for borrowers beyond the new limit
+        if (key.startsWith('borrower_')) {
+          const borrowerIndex = parseInt(key.split('_')[1], 10)
+          if (borrowerIndex >= value) {
+            delete newAnswers[key]
+          }
         }
       })
 
@@ -156,7 +160,7 @@ export function Form() {
 
   if (loading) return <Loader />
   return (
-    <Box sx={{ padding: 3, maxWidth: '900px', mx: 'auto' }}>
+    <Box sx={{ padding: 3, maxWidth: '850px', mx: 'auto' }}>
       {alertMessage && <Box sx={{ mb: 2 }}>{alertMessage}</Box>}
       <FormControl
         fullWidth
@@ -175,6 +179,8 @@ export function Form() {
               value={value}
               control={<Radio />}
               label={value}
+              name='numBorrowers'
+              onChange={handleInputChange}
             />
           ))}
         </RadioGroup>

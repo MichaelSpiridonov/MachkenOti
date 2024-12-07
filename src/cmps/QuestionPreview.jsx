@@ -9,6 +9,8 @@ import {
   Select,
   MenuItem,
   InputLabel,
+  Typography,
+  Checkbox,
 } from '@mui/material'
 
 export function QuestionPreview({
@@ -17,9 +19,9 @@ export function QuestionPreview({
   answers,
   index,
 }) {
+  console.log(question)
   switch (question.type) {
     case 'text':
-    case 'number':
       return (
         <TextField
           key={question.id}
@@ -31,6 +33,40 @@ export function QuestionPreview({
           value={answers[question.id + index] || ''}
           required
           onChange={handleInputChange}
+        />
+      )
+    case 'number':
+      return (
+        <TextField
+          key={question.id}
+          label={question.text}
+          name={question.id + index}
+          type='text'
+          fullWidth
+          pattern='/^\d*$/'
+          sx={{ mb: 2 }}
+          value={answers[question.id + index] || ''}
+          required
+          onChange={(e) => {
+            let value = e.target.value
+
+            // Allow only numeric input, including leading zeros
+            if (!/^\d*$/.test(value)) return
+
+            // Update answers state
+            handleInputChange({
+              target: { name: e.target.name, value, type: 'text' },
+            })
+          }}
+          onInput={(e) => {
+            let value = e.target.value
+
+            // Ensure value does not exceed maxLength
+            if (question?.maxLength && value.length > question?.maxLength) {
+              value = value.slice(0, question?.maxLength)
+              e.target.value = value
+            }
+          }}
         />
       )
 
@@ -72,7 +108,13 @@ export function QuestionPreview({
           <FormLabel>{question.text}</FormLabel>
           <RadioGroup
             row
-            value={answers[question.id + index] === true ? 'yes' : answers[question.id + index] === false ? 'no' : ''}
+            value={
+              answers[question.id + index] === true
+                ? 'yes'
+                : answers[question.id + index] === false
+                ? 'no'
+                : ''
+            }
             name={question.id + index}
             onChange={handleInputChange}
           >
@@ -96,7 +138,7 @@ export function QuestionPreview({
           key={question.id}
           label={question.text}
           name={question.id + index}
-          type='date'
+          type={question.type}
           fullWidth
           sx={{ mb: 2 }}
           value={answers[question.id + index] || ''}
@@ -106,6 +148,22 @@ export function QuestionPreview({
           InputLabelProps={{
             shrink: true,
           }}
+        />
+      )
+    case 'checkbox':
+      return (
+        <FormControlLabel
+          control={<Checkbox />}
+          label={
+            <Typography sx={{ fontWeight: 'bold' }}>
+              ברור לי כי אני מחוייב\ת על אמינות ועדכניות הפרטים שמלאתי *
+            </Typography>
+          }
+          name={question.id + index}
+          value={answers['AgreedTo' + index]}
+          onClick={handleInputChange}
+          key={question.id}
+          type={question.type}
         />
       )
 

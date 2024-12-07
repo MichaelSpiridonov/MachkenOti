@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Box, Checkbox, FormControlLabel, Typography } from '@mui/material'
+import { Box } from '@mui/material'
 import { QuestionPreview } from './QuestionPreview.jsx'
 
 export function QuestionList({
@@ -32,19 +32,6 @@ export function QuestionList({
                 </div>
               )
             })}
-            {questions.some((q) => q.isRequired) && (
-              <FormControlLabel
-                control={<Checkbox />}
-                label={
-                  <Typography sx={{ fontWeight: 'bold' }}>
-                    ברור לי כי אני מחוייב\ת על אמינות ועדכניות הפרטים שמלאתי *
-                  </Typography>
-                }
-                name={"AgreedTo" + index}
-                value={answers["AgreedTo" + index]}
-                onClick={handleInputChange}
-              />
-            )}
           </Box>
         ))}
     </Box>

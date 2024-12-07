@@ -1,112 +1,176 @@
 [
-    {
-      "id": "fullName",
-      "text": "שם מלא",
-      "type": "text",
-      "isRequired": true
-    },
-    {
-      "id": "idNumber",
-      "text": "מספר ת.ז",
-      "type": "number",
-      "maxLength": 9,
-      "isRequired": true
-    },
-    {
-      "id": "maritalStatus",
-      "text": "סטטוס משפחתי",
-      "type": "select",
-      "options": ["רווק", "נשוי", "גרוש", "אלמן"],
-      "isRequired": true
-    },
-    {
-      "id": "employmentStatus",
-      "text": "סטטוס תעסוקתי",
-      "type": "select",
-      "options": ["שכיר", "עצמאי", "שכיר בעל שליטה", "פנסיונר", "חייל"],
-      "isRequired": true
-    },
-    {
-      "id": "paysRent",
-      "text": "האם מתגורר בשכירות?",
-      "type": "boolean",
-      "isRequired": true
-    },
-    {
-      "id": "monthlyPayment",
-      "text": "כמה משלמים בחודש?",
-      "type": "number",
-      "condition": "paysRent",
-      "isRequired": true
-    },
-    {
-      "id": "mobilePhone",
-      "text": "טלפון נייד",
-      "type": "number",
-      "maxLength": 10,
-      "isRequired": true
-    },
-    {
-      "id": "homeAddress",
-      "text": "כתובת מגורים מלאה",
-      "type": "text",
-      "isRequired": true
-    },
-    {
-      "id": "relationshipWithOthers",
-      "text": "קשר לשאר הלווים",
-      "type": "select",
-      "options": ["משפחה", "בן זוג", "שותפים"],
-      "condition": "numBorrowers",
-      "isRequired": true
-    },
-    {
-      "id": "birthDate",
-      "text": "תאריך לידה",
-      "type": "date",
-      "isRequired": true
-    },
-    {
-      "id": "incomeSalary",
-      "text": "הכנסות ממשכורת נטו",
-      "type": "number",
-      "isRequired": true
-    },
-    {
-      "id": "additionalIncomeSource",
-      "text": "אם יש הכנסות נוספות מה מקורן וכמה?",
-      "type": "text",
-      "isRequired": true
-    },
-    {
-      "id": "bankDeposit",
-      "text": "המשכורת מופקדת בבנק?",
-      "type": "boolean",
-      "isRequired": true
-    },
-    {
-      "id": "employmentDuration",
-      "text": "וותק או רצף במקום העבודה",
-      "type": "text",
-      "isRequired": true
-    },
-    {
-      "id": "numPropertiesOwned",
-      "text": "מספר דירות בבעלות",
-      "type": "number",
-      "isRequired": true
-    },
-    {
-      "id": "idIssueDate",
-      "text": "תאריך הנפקת ת\"ז",
-      "type": "date",
-      "isRequired": true
-    },
-    {
-      "id": "creditCardActive",
-      "text": "האם יש כרטיס אשראי בנקאי בתוקף?",
-      "type": "boolean",
-      "isRequired": true
-    }
-  ]
-  
+  {
+    "id": "fullName",
+    "text": "שם מלא",
+    "type": "text",
+    "isRequired": true
+  },
+  {
+    "id": "idNumber",
+    "text": "מספר ת.ז",
+    "type": "number",
+    "maxLength": 9,
+    "isRequired": true
+  },
+  {
+    "id": "maritalStatus",
+    "text": "סטטוס משפחתי",
+    "type": "select",
+    "options": ["רווק", "נשוי", "גרוש", "אלמן"],
+    "isRequired": true
+  },
+  {
+    "id": "employmentStatus",
+    "text": "סטטוס תעסוקתי",
+    "type": "select",
+    "options": ["שכיר", "עצמאי", "שכיר בעל שליטה", "פנסיונר", "חייל"],
+    "isRequired": true
+  },
+  {
+    "id": "paysRent",
+    "text": "האם מתגורר בשכירות?",
+    "type": "boolean",
+    "isRequired": true
+  },
+  {
+    "id": "monthlyPayment",
+    "text": "כמה משלמים בחודש?",
+    "type": "number",
+    "condition": "paysRent",
+    "isRequired": true
+  },
+  {
+    "id": "mobilePhone",
+    "text": "טלפון נייד",
+    "type": "number",
+    "maxLength": 10,
+    "isRequired": true
+  },
+  {
+    "id": "homeAddress",
+    "text": "כתובת מגורים מלאה",
+    "type": "text",
+    "isRequired": true
+  },
+  {
+    "id": "relationshipWithOthers",
+    "text": "קשר לשאר הלווים",
+    "type": "select",
+    "options": ["אין", "משפחה", "בן זוג", "שותפים"],
+    "isRequired": true
+  },
+  {
+    "id": "birthDate",
+    "text": "תאריך לידה",
+    "type": "date",
+    "isRequired": true
+  },
+  {
+    "id": "incomeSalary",
+    "text": "הכנסות ממשכורת נטו",
+    "type": "number",
+    "isRequired": true
+  },
+  {
+    "id": "additionalIncomeSource",
+    "text": "אם יש הכנסות נוספות מה מקורן וכמה?",
+    "type": "boolean",
+    "isRequired": true
+  },
+  {
+    "id": "sourceOfIncomeLocation",
+    "text": "מקורן של ההכנסות",
+    "type": "text",
+    "condition": "additionalIncomeSource",
+    "isRequired": true
+  },
+  {
+    "id": "sourceOfIncomeAmount",
+    "text": "כמה ההכנסות הנוספות?",
+    "type": "text",
+    "condition": "additionalIncomeSource",
+    "isRequired": true
+  },
+  {
+    "id": "bankDeposit",
+    "text": "המשכורת מופקדת בבנק?",
+    "type": "boolean",
+    "isRequired": true
+  },
+  {
+    "id": "currentBank",
+    "text": "בנק נוכחי",
+    "type": "text",
+    "isRequired": true
+  },
+  {
+    "id": "companyBranch",
+    "text": "סניף",
+    "type": "text",
+    "isRequired": true
+  },
+  {
+    "id": "employmentDuration",
+    "text": "וותק או רצף במקום העבודה",
+    "type": "text",
+    "isRequired": true
+  },
+  {
+    "id": "numPropertiesOwned",
+    "text": "מספר דירות בבעלות",
+    "type": "number",
+    "isRequired": true
+  },
+  {
+    "id": "creditCardActive",
+    "text": "האם יש כרטיס אשראי בנקאי בתוקף?",
+    "type": "boolean",
+    "isRequired": true
+  },
+  {
+    "id": "agreeToAgreement",
+    "text": "ברור לי כי אני מחוייבת על אמינות ועדכניות הפרטים שמלאתי",
+    "type": "checkbox",
+    "isRequired": true
+  },
+  {
+    "id": "isMyProperty",
+    "text": "אתה בעל נכס על שמך?",
+    "type": "boolean",
+    "isRequired": true
+  },
+  {
+    "id": "porpertyWorth",
+    "text": "שווי נכס מוערך",
+    "type": "select",
+    "options": ["500,000-1,000,000", "1,100,000-2,000,000", "2,000,000-5,000,000", "5,000,000+"],
+    "isRequired": true
+  },
+  {
+    "id": "currentMorgadgeHeight",
+    "text": "גובה המשכנתה הקיימת",
+    "type": "number",
+    "isRequired": true
+  },
+  {
+    "id": "areExistingMorgadges",
+    "text": "האם יש הלוואות בנוסף למשכנתא?",
+    "options": ["לא", "כן, מעל - 200 אלף שח", "כן, מתחת ל- 200 אלף שח"],
+    "type": "select",
+    "isRequired": true
+  },
+  {
+    "id": "familyIncome",
+    "text": "גובה ההכנסה משפחתית נטו",
+    "type": "select",
+    "options": ["15,000 - 10,000 שח נטו חודשי בבנק", "20,000 - 16,000 שח נטו חודשי בבנק", "+25,000 נטו"],
+    "isRequired": true
+  },
+  {
+    "id": "isSelfEmployed",
+    "text": "את/ה שכיר או עצמאי?",
+    "type": "select",
+    "options": ["שכיר", "שכיר/ה ועצמאי/ת", "עצמאי/ת"],
+    "isRequired": true
+  }
+]
