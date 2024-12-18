@@ -104,7 +104,7 @@
     "isRequired": true
   },
   {
-    "id": "companyBranch",
+    "id": "bankBranch",
     "text": "סניף",
     "type": "text",
     "isRequired": true
@@ -137,6 +137,7 @@
     "id": "porpertyWorth",
     "text": "שווי נכס מוערך",
     "type": "select",
+    "condition": "isMyProperty",
     "options": ["500,000-1,000,000", "1,100,000-2,000,000", "2,000,000-5,000,000", "5,000,000+"],
     "isRequired": true
   },
@@ -144,12 +145,14 @@
     "id": "currentMorgadgeHeight",
     "text": "גובה המשכנתה הקיימת",
     "type": "number",
+    "condition": "isMyProperty",
     "isRequired": true
   },
   {
     "id": "areExistingMorgadges",
     "text": "האם יש הלוואות בנוסף למשכנתא?",
     "options": ["לא", "כן, מעל - 200 אלף שח", "כן, מתחת ל- 200 אלף שח"],
+    "condition": "isMyProperty",
     "type": "select",
     "isRequired": true
   },
@@ -157,6 +160,7 @@
     "id": "familyIncome",
     "text": "גובה ההכנסה משפחתית נטו",
     "type": "select",
+    "condition": "isMyProperty",
     "options": ["15,000 - 10,000 שח נטו חודשי בבנק", "20,000 - 16,000 שח נטו חודשי בבנק", "+25,000 נטו"],
     "isRequired": true
   },

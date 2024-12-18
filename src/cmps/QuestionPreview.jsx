@@ -19,7 +19,6 @@ export function QuestionPreview({
   answers,
   index,
 }) {
-  console.log(question)
   switch (question.type) {
     case 'text':
       return (

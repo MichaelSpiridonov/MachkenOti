@@ -11,7 +11,7 @@ export function LandingPage() {
         src='./img/ProfileImage.jpg?'
         alt='Person Image'
       />
-      <Link to={'/form'} className='frm-btn'>לחץ כאן כדי להתחיל תהליך הרשמה</Link>
+      <Link to={'/chat'} className='frm-btn'>תן לחיצה נשמה שלי</Link>
       <section className='profile-information'></section>
       <section className='socials'>
         <a href='https://www.instagram.com/eldad_cremisi/'>
